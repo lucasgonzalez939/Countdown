@@ -3,6 +3,10 @@ let targetDate;  // Special target date stored globally
 let customMessage = '';  // Custom message
 let notes = {};  // To store notes
 
+// Define preset values
+const presetDate = new Date("2024-10-11T05:35:00");  // Preset date and time
+const presetMessage = "que llegue Alana!!";    // Preset custom message
+
 // Open IndexedDB
 function openDatabase() {
     const request = indexedDB.open("countdownDB", 1);
@@ -31,10 +35,13 @@ function loadDataFromDB() {
 
     request.onsuccess = function (event) {
         if (event.target.result) {
+            // Load saved data from IndexedDB
             targetDate = new Date(event.target.result.date);
-            customMessage = event.target.result.message || ''; // Load custom message if available
+            customMessage = event.target.result.message || '';
         } else {
-            targetDate = new Date();  // Default to today's date if no target date is stored
+            // No saved data, use preset values
+            targetDate = presetDate;
+            customMessage = presetMessage;
         }
         updateCountdown();
     };
@@ -75,7 +82,7 @@ function resetNotesFromDB() {
     clearRequest.onsuccess = function () {
         notes = {};  // Clear notes from memory
         displayNotes();  // Clear the displayed notes
-        alert('All notes have been reset.');
+        alert('Se han borrado las notas.');
     };
 }
 
@@ -93,7 +100,7 @@ document.getElementById('set-date-time').addEventListener('click', function () {
 
         document.getElementById('date-time-setter').classList.add('hidden'); // Hide the input form
     } else {
-        alert("Please select both date and time.");
+        alert("Por favor, seleciona fecha y hora");
     }
 });
 
@@ -113,13 +120,13 @@ function updateCountdown() {
     const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
     const countdownElement = document.getElementById("countdown");
-    countdownElement.innerHTML = `${days} Dias, ${hours} Horas, ${minutes} Minutos, ${seconds} Segundos<br> para ${customMessage}`;
+    countdownElement.innerHTML = `${days} Dias, ${hours} Horas, ${minutes} Minutos, ${seconds} Segundos<br>${customMessage}`;
 
     updateCalendar(now, targetDate);
 
     if (timeDifference < 0) {
         clearInterval(interval);
-        countdownElement.innerHTML = "¡Llego el momento!!";
+        countdownElement.innerHTML = "¡Ha llegado el momento!";
     }
 }
 
@@ -174,7 +181,7 @@ function updateCalendar(startDate, endDate) {
             }
 
             dayElement.addEventListener('click', function () {
-                const note = prompt(`Infresa una nota para el ${dayDate.toDateString()}:`);
+                const note = prompt(`Ingrese una nota para el ${dayDate.toDateString()}:`);
                 if (note) {
                     const formattedDate = dayDate.toDateString();
                     notes[formattedDate] = note;
@@ -193,7 +200,6 @@ function updateCalendar(startDate, endDate) {
         }
     }
 }
-
 
 // Function to display the notes below the calendar
 function displayNotes() {
@@ -219,7 +225,7 @@ document.getElementById('print-notes').addEventListener('click', function () {
 
 // Reset notes when button is clicked
 document.getElementById('reset-notes').addEventListener('click', function () {
-    if (confirm("¿Queres borrar todas las notas?")) {
+    if (confirm("¿Queres borrar las notas?")) {
         resetNotesFromDB();  // Clear notes from IndexedDB
     }
 });
