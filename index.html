@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuenta regresiva</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Cuenta atrás para la fecha especial</h1>
+
+    <div id="countdown">Cargando...</div>
+    <div id="custom-message-display"></div> <!-- Custom message will be displayed here -->
+
+    <!-- Button to show hidden date and time input form -->
+    <button id="show-set-date-time">Configurar la fecha y hora especial</button>
+
+    <!-- Hidden div for setting the date, time, and custom message -->
+    <div id="date-time-setter" class="hidden">
+        <label for="special-date">Selecciona una fecha: </label>
+        <input type="date" id="special-date">
+        <br>
+        <label for="special-time">Selecciona una hora: </label>
+        <input type="time" id="special-time">
+        <br>
+        <label for="custom-message">Mensaje personalizado: </label>
+        <input type="text" id="custom-message" placeholder="Escribe un mensaje personalizado">
+        <br>
+        <button id="set-date-time">Configura fecha, hora y mensaje</button>
+    </div>
+
+    <div id="calendar"></div>
+
+    <h2>Notes</h2>
+    <div id="notes-list"></div>
+
+    <!-- Buttons to reset notes and print notes -->
+    <button id="reset-notes">Borrar Notas</button>
+    <button id="print-notes">Imprimir Notas</button>
+
+    <script src="script.js"></script>
+</body>
+</html>

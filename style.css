@@ -1,0 +1,122 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+h1, h2 {
+    margin-top: 20px;
+}
+
+#countdown {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+#calendar {
+    margin: 20px auto;
+    display: block;
+}
+
+.month-header {
+    font-weight: bold;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.month-grid {
+    display: grid;
+    gap: 5px;
+    justify-content: center;
+}
+
+.day, .empty {
+    width: 50px;
+    height: 50px;
+    background-color: lightblue;
+    border: 1px solid #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.day:hover {
+    background-color: lightgreen;
+}
+
+.day.remaining {
+    background-color: lightcoral;
+}
+
+.empty {
+    background-color: transparent;
+    border: none;
+}
+
+.hidden {
+    display: none;
+}
+
+#notes-list {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    min-height: 50px;
+    text-align: left;
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#date-time-setter{
+    padding: auto;
+}
+.day-header {
+    font-weight: bold;
+    background-color: #e0e0e0;
+    text-align: center;
+    padding: 5px 0;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .day, .empty {
+        width: 40px;
+        height: 40px;
+    }
+
+    #countdown {
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 480px) {
+    .day, .empty {
+        width: 35px;
+        height: 35px;
+    }
+
+    #calendar {
+        width: 100%;
+    }
+
+    #notes-list {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    button {
+        font-size: 14px;
+    }
+}
