@@ -4,8 +4,8 @@ let customMessage = '';  // Custom message
 let notes = {};  // To store notes
 
 // Define preset values
-const presetDate = new Date("2024-10-11T05:35:00");  // Preset date and time
-const presetMessage = "¡¡Para que llegue Alana!!";    // Preset custom message
+const presetDate = new Date("2024-10-26T05:35:00");  // Preset date and time
+const presetMessage = "¡¡Para que llegue mi Alu!!";    // Preset custom message
 
 // Open IndexedDB
 function openDatabase() {
