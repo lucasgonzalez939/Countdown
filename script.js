@@ -4,7 +4,7 @@ let customMessage = '';  // Custom message
 let notes = {};  // To store notes
 
 // Define preset values
-const presetDate = new Date("2024-12-20T18:00:00");  // Preset date and time
+const presetDate = new Date("2024-12-18T18:00:00");  // Preset date and time
 const presetMessage = "¡¡Voy al encuentro de mi amada!!";    // Preset custom message
 
 // Open IndexedDB
